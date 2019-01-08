@@ -28,8 +28,8 @@
 			</div>
 			<div class="card-body">
 				<?php include('../layout/comps/addNew.php'); ?>
-				<div class="table-responsive vs-datatable">
-					<table id="datatables" class="table table-hover table-striped">
+				<div class="vs-datatable">
+					<table id="datatables" class="table table-hover table-striped" width="100%">
 						<thead>
 							<tr>
 								<th>N&deg;</th>
@@ -37,6 +37,7 @@
 								<th>E-mail</th>
 								<th>phone</th>
 								<th>Role</th>
+								<th width="10%" class="text-center">Status</th>
 								<th width="10%" class="disabled-sorting text-right">Action</th>
 							</tr>
 						</thead>
@@ -66,25 +67,6 @@
 			}
 		});
 
-		var table = $('#datatable').DataTable();
-
-		// Edit record
-		table.on('click', '.edit', function() {
-			$tr = $(this).closest('tr');
-			var data = table.row($tr).data();
-			alert('You press on Row: ' + data[0] + ' ' + data[1] + ' ' + data[2] + '\'s row.');
-		});
-
-		// Delete a record
-		table.on('click', '.remove', function(e) {
-			$tr = $(this).closest('tr');
-			table.row($tr).remove().draw();
-			e.preventDefault();
-		});
-
-		//Like record
-		table.on('click', '.like', function() {
-			alert('You clicked on Like button');
-		});
+		
 	});
 </script>

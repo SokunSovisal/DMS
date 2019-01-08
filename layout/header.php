@@ -1,8 +1,8 @@
 <?php
-	// if (@VSLOGGL !=true) {
-	// 	header('location: auth/login.php');
-	// 	exit();
-	// }
+	if (@VSLOGGL !=true) {
+		header('location: '.BASE.'auth/login.php');
+		exit();
+	}
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -22,6 +22,7 @@
 	<script src="<?=@BASE?>dist/js/core/popper.min.js"></script>
 	<script src="<?=@BASE?>dist/js/core/bootstrap-material-design.min.js"></script>
 	<script src="<?=@BASE?>dist/js/plugins/bootstrap-selectpicker.js"></script>
+	<script src="<?=@BASE?>dist/js/plugins/jasny-bootstrap.min.js"></script>
 	<script src="<?=@BASE?>dist/js/plugins/jquery.validate.min.js"></script>
 	<script src="<?=@BASE?>dist/js/plugins/jquery.dataTables.min.js"></script>
 	<script src="<?=@BASE?>dist/js/plugins/perfect-scrollbar.jquery.min.js"></script>
@@ -29,18 +30,17 @@
 	<script src="<?=@BASE?>dist/js/javascript.js" type="text/javascript"></script>
 
 	<!-- Optional Script -->
-	<!-- <script src="<?=@BASE?>dist/js/core.js"></script> -->
-	<!-- <script src="<?=@BASE?>dist/js/plugins/moment.min.js"></script> -->
-	<!-- <script src="<?=@BASE?>dist/js/plugins/sweetalert2.js"></script> -->
-	<!-- <script src="<?=@BASE?>dist/js/plugins/jquery.bootstrap-wizard.js"></script> -->
-	<!-- <script src="<?=@BASE?>dist/js/plugins/bootstrap-datetimepicker.min.js"></script> -->
-	<!-- <script src="<?=@BASE?>dist/js/plugins/jasny-bootstrap.min.js"></script> -->
-	<!-- <script src="<?=@BASE?>dist/js/plugins/fullcalendar.min.js"></script> -->
-	<!-- <script src="<?=@BASE?>dist/js/plugins/jquery-jvectormap.js"></script> -->
-	<!-- <script src="<?=@BASE?>dist/js/plugins/nouislider.min.js"></script> -->
-	<!-- <script src="<?=@BASE?>dist/js/plugins/arrive.min.js"></script> -->
-	<!-- <script src="<?=@BASE?>dist/js/plugins/chartist.min.js"></script> -->
-	<!-- <script src="<?=@BASE?>dist/js/plugins/bootstrap-notify.js"></script> -->
+	<!-- <script src="<?=@BASE?>dist/js/core.js"></script>
+	<script src="<?=@BASE?>dist/js/plugins/moment.min.js"></script>
+	<script src="<?=@BASE?>dist/js/plugins/sweetalert2.js"></script>
+	<script src="<?=@BASE?>dist/js/plugins/jquery.bootstrap-wizard.js"></script>
+	<script src="<?=@BASE?>dist/js/plugins/bootstrap-datetimepicker.min.js"></script>
+	<script src="<?=@BASE?>dist/js/plugins/fullcalendar.min.js"></script>
+	<script src="<?=@BASE?>dist/js/plugins/jquery-jvectormap.js"></script>
+	<script src="<?=@BASE?>dist/js/plugins/nouislider.min.js"></script>
+	<script src="<?=@BASE?>dist/js/plugins/arrive.min.js"></script>
+	<script src="<?=@BASE?>dist/js/plugins/chartist.min.js"></script>
+	<script src="<?=@BASE?>dist/js/plugins/bootstrap-notify.js"></script> -->
 
 	<!-- CSS Files -->
 	<link href="<?=@BASE?>dist/css/all.min.css" rel="stylesheet" />

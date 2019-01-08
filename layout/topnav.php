@@ -22,8 +22,7 @@
 						<ul class="navbar-nav" style="margin-right: 20px;">
 
 							<li class="nav-item dropdown">
-								<a class="nav-link" href="#pablo" id="navbarDropdownProfile" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-									<i class="material-icons">person</i>
+								<a class="nav-link" href="#" id="navbarDropdownProfile" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="background: url(<?=@BASE?>src/images/users/<?=@UIMG?>) center center; background-size: cover;width: 45px; height: 45px; border: 2px solid #fff; border-radius: 50%;">
 									<p class="d-lg-none d-md-block">
 										Account
 									</p>
@@ -32,10 +31,18 @@
 									<a class="dropdown-item" href="#">Profile</a>
 									<a class="dropdown-item" href="#">Settings</a>
 									<div class="dropdown-divider"></div>
-									<a class="dropdown-item" href="#">Log out</a>
+									<a class="dropdown-item" href="?action=sign-out">Log out</a>
 								</div>
 							</li>
 						</ul>
 					</div>
 				</div>
 			</nav> <!-- End Navbar -->
+
+<?php
+	// ============== Sign Out ============
+	if (@$_GET['action']=='sign-out'){
+		header ('Location: '.BASE.'auth/login.php');
+		session_destroy();
+	}
+?>

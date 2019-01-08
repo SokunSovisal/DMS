@@ -3,7 +3,10 @@
 	ob_start();
 
   // Define User Data
+  define('UID', @$_SESSION['uid']);
   define('UNAME', @$_SESSION['uname']);
+  define('UROLE', @$_SESSION['urole']);
+  define('UIMG', @$_SESSION['uimg']);
   
   // Define Language
   define('LANG', @$_SESSION['lang']);

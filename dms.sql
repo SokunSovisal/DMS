@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jan 07, 2019 at 03:28 PM
+-- Generation Time: Jan 08, 2019 at 06:52 PM
 -- Server version: 10.1.37-MariaDB
 -- PHP Version: 7.2.12
 
@@ -34,6 +34,7 @@ CREATE TABLE `users` (
   `u_gender` tinyint(1) NOT NULL DEFAULT '1',
   `u_phone` varchar(12) DEFAULT NULL,
   `email` varchar(25) NOT NULL,
+  `u_status` tinyint(1) NOT NULL DEFAULT '1',
   `password` varchar(255) NOT NULL,
   `u_image` varchar(255) DEFAULT 'default_user.png',
   `u_role_id` int(11) NOT NULL DEFAULT '3'
@@ -43,8 +44,8 @@ CREATE TABLE `users` (
 -- Dumping data for table `users`
 --
 
-INSERT INTO `users` (`id`, `u_name`, `u_gender`, `u_phone`, `email`, `password`, `u_image`, `u_role_id`) VALUES
-(7, 'Sokun Sovisal', 1, '098 794 286', 'vs@gl.com', '12345678', 'default_user.png', 3);
+INSERT INTO `users` (`id`, `u_name`, `u_gender`, `u_phone`, `email`, `u_status`, `password`, `u_image`, `u_role_id`) VALUES
+(12, 'Sokun Sovisal', 0, '098 794 2861', 'vs@gl.com', 1, '$2y$10$qRTZpWCFsqs8Un54Cle96OcqXlkwN6HTzmkv.5xXqg2IX9zyyUkoa', '1546963080_7042.png', 3);
 
 -- --------------------------------------------------------
 
@@ -92,7 +93,7 @@ ALTER TABLE `user_roles`
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 
 --
 -- AUTO_INCREMENT for table `user_roles`

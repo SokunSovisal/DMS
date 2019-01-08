@@ -14,60 +14,34 @@
 				<form method="post" action="?action=store" class="form-horizontal" id="userForm">
 					<div class="row">
 						<div class="col-sm-6">
-							<div class="row">
-								<label class="col-sm-2 col-form-label">User Name</label>
-								<div class="col-sm-10">
-									<div class="form-group bmd-form-group">
-										<input type="text" class="form-control" name="u_name" placeholder="username">
-									</div>
-								</div> <!-- /.col -->
-							</div> <!-- /.row -->
-							<div class="row mt-1">
-								<label class="col-sm-2 col-form-label">Gender</label>
-								<div class="col-sm-10">
-									<select class="selectpicker" data-size="8" name="u_gender" data-style="btn btn-primary" title="Choose Gender">
-										<option value="1">Male</option>
-										<option value="2">Female</option>
-										<option value="3">Other</option>
-									</select>
-								</div> <!-- /.col -->
-							</div> <!-- /.row -->
-							<div class="row">
-								<label class="col-sm-2 col-form-label">Phone</label>
-								<div class="col-sm-10">
-									<div class="form-group bmd-form-group">
-										<input type="text" class="form-control" name="u_phone" placeholder="phone">
-									</div>
-								</div> <!-- /.col -->
-							</div> <!-- /.row -->
+							<div class="form-group">
+                <input type="text" class="form-control" placeholder="User Name" name="u_name">
+              </div>
+							<div class="form-group">
+								<select class="form-control selectpicker" data-style="text-light" title="Title">
+									<option value="1">Male</option>
+									<option value="2">Female</option>
+									<option value="3">Other</option>
+								</select>
+							</div>
+							<div class="form-group">
+								<input type="text" placeholder="Phone" class="form-control" name="u_phone" >
+							</div>
 						</div> <!-- /.col -->
 						
 
 						<div class="col-sm-6">
-							<div class="row">
-								<label class="col-sm-2 col-form-label">E-mail</label>
-								<div class="col-sm-10">
-									<div class="form-group bmd-form-group">
-										<input type="email" class="form-control" name="email" placeholder="email" required="true" aria-required="true" autocomplete="off">
-									</div>
-								</div> <!-- /.col -->
-							</div> <!-- /.row -->
-							<div class="row">
-								<label class="col-sm-2 col-form-label">Password</label>
-								<div class="col-sm-10">
-									<div class="form-group bmd-form-group">
-										<input type="password" class="form-control" minlength="6" id="password" required="true" name="password" autocomplete="off">
-									</div>
-								</div> <!-- /.col -->
-							</div> <!-- /.row -->
-							<div class="row">
-								<label class="col-sm-2 col-form-label">Confirm-Password</label>
-								<div class="col-sm-10">
-									<div class="form-group bmd-form-group">
-										<input type="password" class="form-control" required="true" equalTo="#password" name="password_confirmation" autocomplete="off">
-									</div>
-								</div> <!-- /.col -->
-							</div> <!-- /.row -->
+							<div class="form-group">
+                <input type="email" class="form-control" placeholder="E-mail"  name="email">
+              </div>
+
+							<div class="form-group">
+                <input type="password" class="form-control" placeholder="Password" id="password" minlength="6" name="password" required="true" >
+              </div>
+
+              <div class="form-group">
+                <input type="password" class="form-control"  placeholder="Confirm-Password" equalTo="#password" name="password_confirmation" required="true" >
+              </div>
 						</div> <!-- /.col -->
 
 						<div class="col-sm-12">

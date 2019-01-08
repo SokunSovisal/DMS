@@ -14271,6 +14271,12 @@ fieldset[disabled] .form-group.is-focused .togglebutton label {
     box-shadow: 0 1px 3px 1px rgba(0, 0, 0, .4), 0 0 0 15px rgba(156, 39, 176, .1)
 }
 
+.togglebutton label input[type=checkbox]:checked+.toggle.toggle-success {
+    background-color: rgba(71, 164, 75, 0.7);
+}
+.togglebutton label input[type=checkbox]:checked+.toggle.toggle-success:after {
+    border-color: #47A44B;
+}
 .ripple {
     position: relative
 }
@@ -26566,4 +26572,15 @@ screen and (-ms-high-contrast:active) {
     .sidebar .navbar-form {
         display: none!important
     }
+}
+
+#navbarDropdownProfile{
+    box-shadow: 2px 2px 5px rgba(0,0,0,0.4);
+    transition: 0.3s ease-in;
+}
+#navbarDropdownProfile:hover{
+    box-shadow: 1px 1px 5px rgba(0,0,0,0.4);
+}
+#navbarDropdownProfile:active{
+    box-shadow: none;
 }

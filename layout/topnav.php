@@ -9,7 +9,13 @@
 								<i class="material-icons design_bullet-list-67 visible-on-sidebar-mini">view_list</i>
 							</button>
 						</div>
-						<a class="navbar-brand" href="#pablo">Dashboard</a>
+
+						<span class="navbar-brand"><?=@$title?></span>
+						<!-- <nav aria-label="breadcrumb">
+						  <ol class="breadcrumb">
+						  	<?=@$breadcrumb?>
+						  </ol>
+						</nav> -->
 					</div>
 					<button class="navbar-toggler" type="button" data-toggle="collapse" aria-controls="navigation-index" aria-expanded="false" aria-label="Toggle navigation">
 						<span class="sr-only">Toggle navigation</span>
@@ -21,8 +27,8 @@
 
 						<ul class="navbar-nav" style="margin-right: 20px;">
 
-							<li class="nav-item dropdown">
-								<a class="nav-link" href="#" id="navbarDropdownProfile" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="background: url(<?=@BASE?>src/images/users/<?=@UIMG?>) center center; background-size: cover;width: 45px; height: 45px; border: 2px solid #fff; border-radius: 50%;">
+							<li class="nav-item dropdown account">
+								<a class="nav-link wave-effect" href="#" id="navbarDropdownProfile" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="background: url(<?=@BASE?>src/images/users/<?=@UIMG?>) center center; background-size: cover;width: 45px; height: 45px; border: 2px solid #fff; border-radius: 50%;">
 									<p class="d-lg-none d-md-block">
 										Account
 									</p>

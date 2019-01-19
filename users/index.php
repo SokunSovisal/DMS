@@ -1,11 +1,14 @@
 <?php
-	// Basic Variable
-	$title = 'User management';
-	$m = 'manage_users';
-	$sm = 'users';
-
 	// Call Key
 	include('../config/key.php');
+
+	// Basic Variable
+	$title = 'User management';
+	$m = 'User Management';
+	$sm = 'User List';
+	$breadcrumb = '<li class="breadcrumb-item"><a href="'.BASE.'">Dashboard</a></li>
+						    <li class="breadcrumb-item active" aria-current="page">'.$sm.'</li>';
+
 	// include header
 	include('../layout/header.php');
 
@@ -91,6 +94,38 @@
 			exit();
 		}else{
 			echo mysqli_error($db);
+		}
+
+	}else if (@$_GET['action']=='status') {
+		if(isset($_GET['id']) && $_GET['id']!=''){
+			$query = $db->query("SELECT * FROM users WHERE id=".$_GET['id']);
+			if($query->num_rows > 0){
+				while ($row = mysqli_fetch_object($query)) {
+					$u_status = $row->u_status;
+				}
+				if ($u_status==1) {
+					$u_status=0;
+				}else{
+					$u_status=1;
+				}
+				$sql = "UPDATE users SET u_status='$u_status' WHERE id=".$_GET['id'];
+				if ($db->query($sql)==true) {
+					@$_SESSION['success'] = '<div class="alert alert-success">
+																			<button type="button" class="close" data-dismiss="alert" aria-label="Close"><i class="material-icons">close</i></button>
+																			<span>User has been Updated!</span>
+																		</div>';
+					header ('Location: index.php');
+					exit();
+				}else{
+					echo mysqli_error($db);
+				}
+			}else{
+				@$_SESSION['error'] = '<div class="alert alert-danger">
+																<button type="button" class="close" data-dismiss="alert" aria-label="Close"><i class="material-icons">close</i></button>
+																<span>User not found!</span>
+															</div>';
+				header ('Location: index.php');
+			}
 		}
 
 	}else if (@$_GET['action']=='password') {
@@ -187,6 +222,10 @@
 					}
 					move_uploaded_file($_FILES['u_image']['tmp_name'], '../src/images/users/'.$u_image);
 
+					if ($id==UID){
+						@$_SESSION['uimg'] = $u_image;
+					}
+
 					@$_SESSION['success'] = '<div class="alert alert-success">
 																			<button type="button" class="close" data-dismiss="alert" aria-label="Close"><i class="material-icons">close</i></button>
 																			<span>User has been Updated!</span>
@@ -210,7 +249,6 @@
 														</div>';
 			header ('Location: index.php?action=image&id='.$id);
 		}
-		
 	}else if (@$_GET['action']=='delete') {
 
 		if(isset($_GET['id']) && $_GET['id']!=''){
@@ -223,6 +261,9 @@
 				header ('Location: index.php');
 			}else{
 				if ( $db->query("DELETE FROM users WHERE id=".$_GET['id']) == true) {
+					if (UIMG!='default_user.png') {
+						unlink('../src/images/users/'.UIMG);
+					}
 					@$_SESSION['success'] = '<div class="alert alert-success">
 																			<button type="button" class="close" data-dismiss="alert" aria-label="Close"><i class="material-icons">close</i></button>
 																			<span>User has been Deleted successfully!</span>
@@ -246,7 +287,7 @@
 			$i =1;
 			while ($user = $query->fetch_object()) {
 				$tbody .='<tr>
-										<td>'.$i.'</td>
+										<td class="text-center">'.$i.'</td>
 										<td>'.$user->u_name.'</td>
 										<td>'.$user->email.'</td>
 										<td>'.$user->u_phone.'</td>
@@ -254,8 +295,8 @@
 										<td class="text-center">
 											<div class="togglebutton">
 												<label>
-													<input type="checkbox" '.(($user->u_status==1)?'checked':'').'>
-													<span class="toggle toggle-success"></span>
+													<input type="checkbox" '.(($user->u_status==1)?'checked':'').' onchange="getId('.$user->id.')" data-toggle="modal" data-target="#deleteModal" class="toggle-status" />
+													<span class="toggle toggle-active"></span>
 												</label>
 											</div>
 										</td>
@@ -269,7 +310,7 @@
 											<a href="?action=edit&id='.$user->id.'" rel="tooltip" class="btn btn-success" data-placement="left" data-original-title="Edit info">
 												<i class="material-icons">edit</i>
 											</a>
-											<button type="button" onclick="getUid('.$user->id.')" data-toggle="modal" data-target="#deleteModal" rel="tooltip" class="btn btn-danger" data-placement="left" data-original-title="Delete User" title="Delete">
+											<button type="button" onclick="getId('.$user->id.')" data-toggle="modal" data-target="#deleteModal" class="btn btn-danger btndelete" title="Delete">
 												<i class="material-icons">close</i>
 											</button>
 										</td>

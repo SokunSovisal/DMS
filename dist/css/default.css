@@ -5267,6 +5267,9 @@ table.dataTable tbody tr.selected a {
 }
 
 
+.card-wizard .card-header {
+	background: #fff;
+}
 .card-wizard .nav.nav-pills .nav-item {
     margin: 0
 }

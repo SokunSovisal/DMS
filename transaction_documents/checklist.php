@@ -29,8 +29,8 @@
 				<form action="?action=checklist&tr_id=<?=@$tr_id?>" method="post">
 	        <!-- You can switch " data-color="primary" "  with one of the next bright colors: "green", "orange", "red", "blue" -->
 	        <div class="card-header text-center">
-	          <h3 class="card-title mt-2">
-	            Register Check List
+	          <h3 class="card-title mt-2 roboto_r">
+	            REGISTER CHECK LIST
 	          </h3>
 	          <!-- <h5 class="card-description">This information will let us know more about you.</h5> -->
 	        </div>

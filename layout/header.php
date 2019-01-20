@@ -16,6 +16,7 @@
 
 	<!--     Fonts and icons     -->
 	<link rel="shortcut icon" type="image/png" href="<?=@BASE?>dist/img/favicon.png"/>
+  <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Roboto+Slab:400,700|Material+Icons" />
 	
 	<!-- Script -->
 	<script type="text/javascript" src="<?=@BASE?>dist/js/core/jquery.min.js"></script>
@@ -30,10 +31,8 @@
 	<script type="text/javascript" src="<?=@BASE?>dist/js/plugins/perfect-scrollbar.jquery.min.js"></script>
 	<script type="text/javascript" src="<?=@BASE?>dist/js/plugins/jasny-bootstrap.min.js"></script>
 	<script type="text/javascript" src="<?=@BASE?>dist/js/plugins/jquery.bootstrap-wizard.js"></script>
-	<script type="text/javascript" src="<?=@BASE?>dist/js/default.js"></script>
 
 	<!-- CSS Files -->
-	<link rel="stylesheet" type="text/css" href="<?=@BASE?>dist/fonts/iconfont/material-icons.css">
 	<link rel="stylesheet" type="text/css" href="<?=@BASE?>dist/css/all.css">
 	<link rel="stylesheet" type="text/css" href="<?=@BASE?>dist/css/bootstrap.css">
 	<link rel="stylesheet" type="text/css" href="<?=@BASE?>dist/css/bootstrap-select.css">

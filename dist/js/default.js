@@ -52,70 +52,26 @@ $(document).on("click", ".navbar-toggler", function() {
     checkSidebarImage: function() {
         $sidebar = $(".sidebar"), image_src = $sidebar.data("image"), void 0 !== image_src && (sidebar_container = '<div class="sidebar-background" style="background-image: url(' + image_src + ') "/>', $sidebar.append(sidebar_container))
     },
-    initFormExtendedDatetimepickers: function() {
-        $(".datetimepicker").datetimepicker({
-            icons: {
-                time: "fa fa-clock-o",
-                date: "fa fa-calendar",
-                up: "fa fa-chevron-up",
-                down: "fa fa-chevron-down",
-                previous: "fa fa-chevron-left",
-                next: "fa fa-chevron-right",
-                today: "fa fa-screenshot",
-                clear: "fa fa-trash",
-                close: "fa fa-remove"
-            }
-        }), $(".datepicker").datetimepicker({
-            format: "MM/DD/YYYY",
-            icons: {
-                time: "fa fa-clock-o",
-                date: "fa fa-calendar",
-                up: "fa fa-chevron-up",
-                down: "fa fa-chevron-down",
-                previous: "fa fa-chevron-left",
-                next: "fa fa-chevron-right",
-                today: "fa fa-screenshot",
-                clear: "fa fa-trash",
-                close: "fa fa-remove"
-            }
-        }), $(".timepicker").datetimepicker({
-            format: "h:mm A",
-            icons: {
-                time: "fa fa-clock-o",
-                date: "fa fa-calendar",
-                up: "fa fa-chevron-up",
-                down: "fa fa-chevron-down",
-                previous: "fa fa-chevron-left",
-                next: "fa fa-chevron-right",
-                today: "fa fa-screenshot",
-                clear: "fa fa-trash",
-                close: "fa fa-remove"
-            }
-        })
-    },
     initMaterialWizard: function() {
         // Code for the Validator
         var $validator = $('.card-wizard form').validate({
           rules: {
-              firstname: {
-                  required: true,
-                  minlength: 3
+              tr_em_id: {
+                  required: true
               },
-              lastname: {
-                  required: true,
-                  minlength: 3
+              em_id: {
+                  required: true
               },
-              email: {
-                  required: true,
-                  minlength: 3,
+              td_date: {
+                  required: true
               }
           },
 
           highlight: function(element) {
-              $(element).closest('.form-group').removeClass('has-success').addClass('has-danger');
+              $(element).closest('.custom-select').removeClass('is-valid').addClass('is-invalid');
           },
           success: function(element) {
-              $(element).closest('.form-group').removeClass('has-danger').addClass('has-success');
+              $(element).closest('.custom-select').removeClass('is-invalid').addClass('is-valid');
           },
           errorPlacement : function(error, element) {
               $(element).append(error);

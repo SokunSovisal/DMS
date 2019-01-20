@@ -1,26 +1,5 @@
-<?php 
-	$tbody ='';
-	$query = $db->query("SELECT * FROM tbl_document ORDER BY doc_name");
-	if ($query->num_rows > 0) {
-		$i =1;
-		while ($document = $query->fetch_object()) {
-			$tbody .='<tr>
-									<td>'.$i.'</td>
-									<td><label>'.$document->doc_id.'::'.$document->doc_name .'</label></td>
-									<td>
-										<div class="togglebutton">
-											<label>
-												<input type="checkbox" class="doc_check"/>
-												<span class="toggle toggle-active"></span>
-												<input type="hidden" class="d_id" name="d_id[]" disabled value="'.$document->doc_id.'" />
-											</label>
-										</div>
-									</td>
-								</tr>';
-			$i++;
-		}
-	}
-?>
+<?=@ERROR?>
+<?php @$_SESSION['error'] = ''; ?>
 <div class="row">
 	<div class="col-sm-12">
 		<!--      Wizard container        -->
@@ -51,43 +30,68 @@
 	        <div class="card-body">
 	          <div class="tab-content">
 	            <div class="tab-pane active" id="about">
-	              <h5 class="info-text">Let's start with the basic information (Who will responsible for this transition?)</h5>
+	              <h5 class="info-text">Let's start with the basic information (Who will responsible for this transaction?)</h5>
 	              <div class="row justify-content-center">
 
 	                <div class="col-sm-6">
-	                	<div class="input-group">
-										  <div class="input-group-prepend">
-										    <span class="input-group-text"><i class="material-icons">face</i></span>
-										  </div>
-										  <input type="text" class="form-control" placeholder="Username" required>
-										</div>
+	                	<div class="responsible-section text-center">
+	                		<i class="material-icons text-info">how_to_reg</i>
+	                	</div>
 	                </div>
 
 	                <div class="col-sm-6">
-	                	<div class="input-group mb-3">
-										  <div class="input-group-prepend">
-										    <span class="input-group-text"><i class="material-icons">face</i></span>
-										  </div>
-										  <input type="text" class="form-control" placeholder="Username" required>
+	                	<div class="form-group">
+	                		<label>Date Record </label>
+		                	<div class="input-group">
+											  <div class="input-group-prepend">
+											    <span class="input-group-text"><i class="material-icons">calendar_today</i></span>
+											  </div>
+												<input type="text" class="form-control datepicker" placeholder="register date" name="td_date" value="<?= date('m/d/Y', strtotime(@$tr_date)) ?>" id="td_date" data-toggle="datetimepicker" data-target="#td_date" required>
+											</div>
 										</div>
+	                	<div class="form-group">
+	                		<label>Control By</label>
+		                	<div class="input-group">
+											  <div class="input-group-prepend">
+											    <span class="input-group-text"><i class="material-icons">face</i></span>
+											  </div>
+											  <select class="custom-select" name="td_control_by" id="td_control_by" required>
+											  	<option value="">-- Please Choose --</option>
+											  	<?= @$employees ?>
+											  </select>
+											</div>
+										</div>
+	                	<div class="form-group">
+	                		<label>Approved By</label>
+		                	<div class="input-group mb-3">
+											  <div class="input-group-prepend">
+											    <span class="input-group-text"><i class="material-icons">face</i></span>
+											  </div>
+											  <select class="custom-select" name="td_approve_by" id="td_approve_by" required>
+											  	<option value="">-- Please Choose --</option>
+											  	<?= @$employees ?>
+											  </select>
+											</div>
+	                	</div>
 	                </div>
-
-	              </div>
+	            	</div>
 	            </div>
 	            <div class="tab-pane" id="account">
-	              <h5 class="info-text"> What are you doing? (checkboxes) </h5>
-								<table id="datatables" class="table table-hover table-striped">
-									<thead>
-										<tr>
-											<th>N&deg;</th>
-											<th>Document Name</th>
-											<th width="15%">SELECT</th>
-										</tr>
-									</thead>
-									<tbody>
-										<?=$tbody?>
-									</tbody>
-								</table>
+	              <h5 class="info-text"> Select require documents </h5>
+	              <div class="table-section" style="overflow-y: auto; max-height: 255px;">
+									<table id="datatables" class="table table-hover table-striped">
+										<thead>
+											<tr>
+												<th>N&deg;</th>
+												<th>Document Name</th>
+												<th width="15%">SELECT</th>
+											</tr>
+										</thead>
+										<tbody>
+											<?=$tbody?>
+										</tbody>
+									</table>
+	              </div>
 							</div>
 	          </div>
 	        </div>
@@ -97,7 +101,7 @@
 	          </div>
 	          <div class="float-right">
 	            <input type="button" class="btn btn-next btn-info btn-wd" name="next" value="Next">
-	            <input type="button" class="btn btn-finish btn-success btn-wd" name="finish" value="Finish" style="display: none;">
+	            <input type="submit" class="btn btn-finish btn-success btn-wd" name="finish" value="Finish" style="display: none;">
 	          </div>
 	          <div class="clearfix"></div>
 	        </div>

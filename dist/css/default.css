@@ -14,12 +14,15 @@ form small{
 table{
  width: 100% !important;
 }
+.border-lr{
+	border-right: 0.5px dotted #f9f9f9;border-left: 0.5px dotted #f9f9f9;
+}
+*.custom-select,
 *.form-control{
 	border-radius: 1px !important;
 }
 .input-group-prepend .input-group-text{
 	border-radius: 1px 0 0 1px;
-	/*border: 1px solid red;*/
 }
 label{
 	color: #32325d !important;
@@ -115,6 +118,7 @@ a.wave-effect .wave-ripple {
   z-index: -1;
 }
 
+.custom-select ,
 .form-control {
 	transition: all .45s cubic-bezier(.68, -.55, .265, 1.55);
 	color: #8898aa;
@@ -122,6 +126,7 @@ a.wave-effect .wave-ripple {
 	box-shadow: 0 3px 2px rgba(233, 236, 239, .05)
 }
 
+.custom-select:focus ,
 .form-control:focus {
 	color: #8898aa;
 	border-color: #5e72e4;
@@ -4695,31 +4700,6 @@ table.dataTable tbody tr.selected a {
 }
 
 
-.bootstrap-datetimepicker-widget .btn[data-action=clear]:after,
-.bootstrap-datetimepicker-widget .btn[data-action=decrementHours]:after,
-.bootstrap-datetimepicker-widget .btn[data-action=decrementMinutes]:after,
-.bootstrap-datetimepicker-widget .btn[data-action=incrementHours]:after,
-.bootstrap-datetimepicker-widget .btn[data-action=incrementMinutes]:after,
-.bootstrap-datetimepicker-widget .btn[data-action=showHours]:after,
-.bootstrap-datetimepicker-widget .btn[data-action=showMinutes]:after,
-.bootstrap-datetimepicker-widget .btn[data-action=today]:after,
-.bootstrap-datetimepicker-widget .btn[data-action=togglePeriod]:after,
-.bootstrap-datetimepicker-widget .picker-switch:after,
-.bootstrap-datetimepicker-widget table th.next:after,
-.bootstrap-datetimepicker-widget table th.prev:after,
-.sr-only {
-    white-space: nowrap;
-    clip-path: inset(50%)
-}
-
-.animation-transition-fast,
-.bootstrap-datetimepicker-widget table td>div,
-.bootstrap-datetimepicker-widget table td span,
-.bootstrap-datetimepicker-widget table th,
-.bootstrap-datetimepicker-widget table th>div {
-    transition: all .15s ease 0s
-}
-
 /*!
  * Datetimepicker for Bootstrap 3
  * ! version : 4.17.37
@@ -5104,12 +5084,16 @@ table.dataTable tbody tr.selected a {
 .bootstrap-datetimepicker-widget.usetwentyfour td.hour {
     height: 27px;
     line-height: 27px
+    border:  1px solid red;
 }
 
 .bootstrap-datetimepicker-widget th{
-	padding: 8px !important;
+	padding: 5px !important;
 }
 
+.bootstrap-datetimepicker-widget .datepicker tr td{
+	padding: 8px 5px !important;
+}
 
 .btn-file {
     position: relative;
@@ -5640,4 +5624,10 @@ table.dataTable tbody tr.selected a {
 
 .card-wizard .tab-pane .form-group.select-wizard {
     margin-top: -6px
+}
+.card-wizard .responsible-section{
+	padding-top: 15px;
+}
+.card-wizard .responsible-section i{
+	font-size: 250px;
 }

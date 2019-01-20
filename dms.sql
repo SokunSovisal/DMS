@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jan 19, 2019 at 06:27 PM
+-- Generation Time: Jan 20, 2019 at 05:26 PM
 -- Server version: 10.1.31-MariaDB
 -- PHP Version: 7.2.4
 
@@ -279,7 +279,7 @@ CREATE TABLE `tbl_transaction` (
 
 INSERT INTO `tbl_transaction` (`tr_id`, `tr_date`, `tr_company`, `tr_service`, `tr_em_id`, `tr_description`, `created_by`, `updated_by`, `created_at`, `updated_at`) VALUES
 (1, '2019-01-10', 1, 1, 1, 'New Company', 12, 12, '2019-01-10 09:02:49', '2019-01-10 09:04:01'),
-(2, '1970-01-01', 1, 2, 4, 'Making Tax Audit', 0, 0, '2019-01-10 10:06:11', '2019-01-10 10:28:35');
+(2, '2019-01-02', 1, 2, 4, 'Making Tax Audit', 0, 0, '2019-01-10 10:06:11', '2019-01-20 08:56:05');
 
 -- --------------------------------------------------------
 
@@ -289,11 +289,11 @@ INSERT INTO `tbl_transaction` (`tr_id`, `tr_date`, `tr_company`, `tr_service`, `
 
 CREATE TABLE `tbl_transaction_document` (
   `td_id` int(11) NOT NULL,
-  `tr_id` int(11) NOT NULL,
-  `d_id` int(11) NOT NULL,
+  `td_transaction_id` int(11) NOT NULL,
+  `td_document_id` int(11) NOT NULL,
   `td_file` varchar(255) DEFAULT NULL,
   `td_date` varchar(191) DEFAULT NULL,
-  `em_id` int(11) DEFAULT NULL,
+  `td_control_by` int(11) DEFAULT NULL,
   `td_status` int(11) DEFAULT '0',
   `td_description` text,
   `td_approve_by` int(11) DEFAULT NULL,
@@ -307,8 +307,10 @@ CREATE TABLE `tbl_transaction_document` (
 -- Dumping data for table `tbl_transaction_document`
 --
 
-INSERT INTO `tbl_transaction_document` (`td_id`, `tr_id`, `d_id`, `td_file`, `td_date`, `em_id`, `td_status`, `td_description`, `td_approve_by`, `created_by`, `updated_by`, `created_at`, `updated_at`) VALUES
-(1, 1, 1, '5', '2019-01-22', 1, 1, 'Document', 2, 12, 12, '2019-01-11 07:27:20', '2019-01-11 08:15:11');
+INSERT INTO `tbl_transaction_document` (`td_id`, `td_transaction_id`, `td_document_id`, `td_file`, `td_date`, `td_control_by`, `td_status`, `td_description`, `td_approve_by`, `created_by`, `updated_by`, `created_at`, `updated_at`) VALUES
+(11, 2, 1, NULL, '2019-02-01', 1, 2, 'Testing', 1, 0, 0, '2019-01-20 13:54:03', '2019-01-20 15:09:25'),
+(12, 2, 3, NULL, '2019-02-01', 1, 1, 'Testin Problem', 1, 0, 0, '2019-01-20 13:54:03', '2019-01-20 15:09:58'),
+(13, 2, 2, NULL, '02/20/2019', 3, 0, NULL, 4, 0, 0, '2019-01-20 13:54:03', '0000-00-00 00:00:00');
 
 -- --------------------------------------------------------
 
@@ -477,7 +479,7 @@ ALTER TABLE `tbl_transaction`
 -- AUTO_INCREMENT for table `tbl_transaction_document`
 --
 ALTER TABLE `tbl_transaction_document`
-  MODIFY `td_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `td_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
 
 --
 -- AUTO_INCREMENT for table `users`

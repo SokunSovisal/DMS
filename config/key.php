@@ -44,11 +44,17 @@
     }
   }
 
-  // Ridirectback WIth data
-  function oldPost($request){
-    foreach ($request as $a => $b) {
-      @$_SESSION['request'] .= htmlentities($a).":".htmlentities($b);
-    }
-  }
+
+
+  // // prevent from access by url
+  // if (@$_GET['action']=='add' OR @$_GET['action']=='store') {
+  //   if(!$row_action_permission->p_add){  exit(); }
+  // }else if (@$_GET['action']=='edit' OR @$_GET['action']=='update') {
+  //   if(!$row_action_permission->p_edit){  exit(); }
+  // }else if (@$_GET['action']=='delete') {
+  //   if(!$row_action_permission->p_delete){  exit(); }
+  // }else{
+  //   if(!$row_action_permission->p_view){  exit(); }
+  // }
 
 ?>

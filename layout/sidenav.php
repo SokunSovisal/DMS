@@ -42,7 +42,7 @@
 															</p>
 														</a>
 														<!-- With Sub -->
-														<div class="collapse '.((@$m==$row_menu->mm_name)?('show'):('')).'" id="drop-'.$row_menu->mm_id.'">
+														<div class="collapse '.((@$m==$row_menu->mm_id)?('show'):('')).'" id="drop-'.$row_menu->mm_id.'">
 															<ul class="nav">';
 															 	$v_get_sub_menu = $db->query("SELECT B.* FROM tbl_main_menu AS A 
 												                    INNER JOIN tbl_left_menu AS B ON B.lm_main_menu=A.mm_id 
@@ -55,7 +55,7 @@
 												                    GROUP BY B.lm_id
 												                    ORDER BY lm_index_order ASC");    
 												                while ($row_sub_menu = mysqli_fetch_object($v_get_sub_menu)) {
-												                    echo '<li class="nav-item '.((@$sm==$row_sub_menu->lm_name)?('active'):('')).'">
+												                    echo '<li class="nav-item '.((@$sm==$row_sub_menu->lm_id)?('active'):('')).'">
 																 		<a class="nav-link" href="'.@BASE.$row_sub_menu->lm_directory.'">
 																	 		'.$row_sub_menu->lm_icon.'
 																	 		<span class="sidebar-normal">'.$row_sub_menu->lm_name.' </span>
@@ -66,7 +66,7 @@
 										</div>
 									</li>';
 			            }else{
-				            echo '<li class="nav-item '.(($m==$row_menu->mm_name)?('active'):('')).'">
+				            echo '<li class="nav-item '.(($m==$row_menu->mm_id)?('active'):('')).'">
 														<a class="nav-link" href="'.@BASE.$row_menu->mm_directory.'">
 															'.$row_menu->mm_icon.'
 															<p>'.$row_menu->mm_name.'</p>

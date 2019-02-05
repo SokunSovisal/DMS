@@ -1,25 +1,10 @@
-<!-- small modal -->
-<div class="modal fade" id="deleteModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-	<div class="modal-dialog modal-small">
-		<div class="modal-content">
-			<div class="modal-header">
-				ARE YOU SURE WANT TO DO THIS ACTION?
-			</div>
-			<div class="modal-body delete">
-				<div class="form-group mt-2">
-					<input type="hidden" id="getid" />
-					<label for="">Please confirm your password!</label>
-					<input type="password" class="form-control" placeholder="input your password" required="true" name="user_password" id="user_password" autocomplete="off" />
-				</div>
-			</div>
-			<div class="modal-footer justify-content-center">
-				<button type="button" class="btn btn-danger" data-dismiss="modal">Never mind</button>
-				<button type="button" id="password_submit" class="btn btn-success">Submit</button>
-			</div>
-		</div>
-	</div>
-</div>
-<!--    end small modal -->
+<style type="text/css">
+	tbody tr{
+		cursor: pointer;
+	}
+</style>
+
+<?php include('../layout/comps/modalDelete.php'); ?>
 
 <div class="row">
 	<div class="col-sm-12">
@@ -32,12 +17,11 @@
 					<thead>
 						<tr>
 							<th width="5%" class="disabled-sorting text-center">N&deg;</th>
-							<th>Company Name</th>
-							<th>Company Type</th>
-							<th>Register Date</th>
-							<th>Contact</th>
-							<th>Control By</th>
-							<th width="10%" class="disabled-sorting text-right">Action</th>
+							<th>ឈ្មោះ</th>
+							<th>ប្រភេទ</th>
+							<th>ថ្ងៃចាប់ផ្ដើម</th>
+							<th>លេខទូរស័ព្ទ</th>
+							<th>គ្រប់គ្រងដោយ</th>
 						</tr>
 					</thead>
 					<tbody>
@@ -49,41 +33,56 @@
 	</div>
 </div>
 
+
+<!-- Modal -->
+<div class="modal fade" id="transactionModal" tabindex="-1" role="dialog" aria-labelledby="transactionModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document" style="min-width: 80%; margin-top: 50px;">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="transactionModalLabel">ជ្រើសរើសប្រតិបត្តិការ</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+      	<a href="#" class="btn btn-block btn-success" id="addTransactoin"><i class="fa fa-plus"></i> &nbsp;&nbsp;បង្កើតប្រតិបត្តិការថ្មី</a>
+				<div class="vs-datatable">
+					<table id="datatables" class="table table-hover table-striped" width="100%">
+						<thead>
+							<tr>
+								<th width="5%" class="disabled-sorting text-center">ល.រ</th>
+								<th>ឈ្មោះ</th>
+								<th class="disabled-sorting text-right">សកម្មភាព</th>
+							</tr>
+						</thead>
+						<tbody class="tr_body">
+
+						</tbody>
+					</table>
+				</div>
+      </div>
+    </div>
+  </div>
+</div>	
+
 <script>
+	function getCid(id) {
+		$('#addTransactoin').attr('href','?action=addtransaction&co_id='+id);
+    $.ajax({url: "ajaxgettransaction.php?co_id="+id,
+	  	success: function(result){
+	  		$('.tr_body').html(result);
+    }});
+	}
+	
+	function transaction_detail(id) {
+		window.location.replace("?action=detail&tr_id="+id);
+	}
+
 	$(document).ready(function() {
-
-		$('#datatables').DataTable({
-			"pagingType": "full_numbers",
-			"lengthMenu": [
-				[10, 25, 50, -1],
-				[10, 25, 50, "All"]
-			],
-			responsive: true,
-			language: {
-				search: "_INPUT_",
-				searchPlaceholder: "Search records",
-			}
-		});
-
 		$('#password_submit').click( function () {
-			var user_password = $('#user_password').val();
 			var id = $('#getid').val();
-			$.ajax({
-				url: '../ajax/checkPassword.php',
-				type: 'post',
-				data: {method: 'fetch', user_password: user_password},
-				success: function(dataReturn){
-					var data = dataReturn.split(";:;");
-					if (data[0]=='success') {
-						window.location.replace("?action=delete&id="+id);
-					}else{
-						if ($('.modal-body.delete').find('div.alert-danger').length == 0) {
-							$('.modal-body.delete').prepend(data[1]);
-						}
-						$('#user_password').val('')
-					}
-				}
-			});
+			window.location.replace("?action=deletetransaction&tr_id="+id);
 		});
 	});
+
 </script>

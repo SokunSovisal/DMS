@@ -1,37 +1,24 @@
-<!-- small modal -->
-<div class="modal fade modal-mini modal-primary" id="deleteModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-	<div class="modal-dialog modal-small">
-		<div class="modal-content">
-			<div class="modal-header">
-				ARE YOU SURE WANT TO DELETE THIS TRANSITION?
-			</div>
-			<div class="modal-body delete">
-				<input type="hidden" id="getid" />
-			</div>
-			<div class="modal-footer justify-content-center">
-				<button type="button" class="btn btn-danger" data-dismiss="modal">Never mind</button>
-				<button type="button" id="password_submit" class="btn btn-success">Submit</button>
-			</div>
-		</div>
-	</div>
-</div>
-<!--    end small modal -->
+<?php include('../layout/comps/modalDelete.php'); ?>
 
 <div class="row">
 	<div class="col-sm-12">
 		<div class="bg-white-content">
-			<?php include('../layout/comps/addNew.php'); ?>
+			<?=@ERROR?>
+			<?php @$_SESSION['error'] = ''; ?>
+			<?=@SUCCESS?>
+			<?php @$_SESSION['success'] = ''; ?>
+			<?= @$btnadd ?>
 			<br/>
 			<br/>
 			<div class="vs-datatable">
-				<table id="datatables" class="table table-hover table-striped" width="100%">
+				<table class="table table-hover table-striped datatables" width="100%">
 					<thead>
 						<tr>
-							<th width="5%" class="disabled-sorting text-center">N&deg;</th>
-							<th>Document Name</th>
-							<th>Description</th>
-							<th>Created Date</th>
-							<th width="10%" class="disabled-sorting text-right">Action</th>
+							<th width="5%" class="disabled-sorting text-center">ល.រ</th>
+							<th>ឈ្មោះ</th>
+							<th>បរិយាយ</th>
+							<th>ថ្ងៃបង្កើត</th>
+							<th width="10%" class="disabled-sorting text-right">សកម្មភាព</th>
 						</tr>
 					</thead>
 					<tbody>
@@ -46,22 +33,35 @@
 <script>
 	$(document).ready(function() {
 
-		$('#datatables').DataTable({
-			"pagingType": "full_numbers",
-			"lengthMenu": [
-				[10, 25, 50, -1],
-				[10, 25, 50, "All"]
-			],
-			responsive: true,
-			language: {
-				search: "_INPUT_",
-				searchPlaceholder: "Search records",
-			}
+		$('.datatables').DataTable({
+		  "language": {
+		    "decimal":        "",
+		    "emptyTable":     "ពុំមានទិន្នន័យឡើយ",
+		    "info":           "បង្ហាញ _START_ ដល់ _END_ នៃ _TOTAL_ ជួរ",
+		    "infoEmpty":      "បង្ហាញ 0 ដល់ 0 នៃ 0 ជួរ",
+		    "infoFiltered":   "(filtered ពី _MAX_ សរុប ជួរ)",
+		    "infoPostFix":    "",
+		    "thousands":      ",",
+		    "lengthMenu":     "បង្ហាញ _MENU_ ជួរ",
+		    "loadingRecords": "កំពុងដំណើរការ...",
+		    "processing":     "កំពុងដំណើរការ...",
+		    "search":         "ស្វែងរក:",
+		    "zeroRecords":    "ពុំមានទិន្នន័យឡើយ",
+		    "paginate": {
+		        "first":      "ដំបូង",
+		        "last":       "ចុងក្រោយ",
+		        "next":       "បន្ទាប់",
+		        "previous":   "ថយ"
+		    },
+		    "aria": {
+		        "sortAscending":  ": activate to sort column ascending",
+		        "sortDescending": ": activate to sort column descending"
+		    }
+		  }
 		});
-
 		$('#password_submit').click( function () {
 			var id = $('#getid').val();
-			window.location.replace("?action=delete&id="+id);
+			window.location.replace("?action=delete&id="+id+"<?=$sub_s_id?>");
 		});
 
 		

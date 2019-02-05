@@ -1,11 +1,11 @@
 <?php
-	// Call Key
-	include('../config/key.php');
 
 	// Basic Variable
 	$title = 'User management';
-	$m = 'User Management';
-	$sm = 'User List';
+	$m = '5';
+	$sm = '5';
+	// Call Key
+	include('../config/key.php');
 	$breadcrumb = '<li class="breadcrumb-item"><a href="'.BASE.'">Dashboard</a></li>
 						    <li class="breadcrumb-item active" aria-current="page">'.$sm.'</li>';
 
@@ -306,13 +306,11 @@
 											</a>
 											<a href="?action=password&id='.$user->id.'" rel="tooltip" class="btn btn-info" data-placement="left" data-original-title="Edit Password">
 												<i class="fa fa-key"></i>
-											</a>
-											<a href="?action=edit&id='.$user->id.'" rel="tooltip" class="btn btn-success" data-placement="left" data-original-title="Edit info">
-												<i class="material-icons">edit</i>
-											</a>
-											<button type="button" onclick="getId('.$user->id.')" data-toggle="modal" data-target="#deleteModal" class="btn btn-danger btndelete" title="Delete">
-												<i class="material-icons">close</i>
-											</button>
+											</a>'.
+											buttonEdit($user->id).'
+											<button type="button" onclick="getId('.$user->id.')" data-toggle="modal" data-target="#deleteModal" rel="tooltip" class="btn btn-danger btndelete" data-placement="left" data-original-title="Delete transactions" title="Delete">
+							          <i class="material-icons">close</i>
+							        </button>
 										</td>
 									</tr>';
 				$i++;

@@ -12,8 +12,6 @@
   define('LANG', @$_SESSION['lang']);
   
   // Define Message
-  // $_SESSION['error'] = [];
-  // $_SESSION['success'] = [];
   define('ERROR', @$_SESSION['error']);
   define('SUCCESS', @$_SESSION['success']);
   @$_SESSION['request'] = [];
@@ -44,17 +42,48 @@
     }
   }
 
+  if (isset($_SESSION['urole']) && $_SESSION['urole']!='') {
+    
+    // permission
+    @$get_action_permission = $db->query("SELECT * FROM tbl_permission WHERE p_position=".$_SESSION['urole']." AND p_module='$sm'");
+    @$row_action_permission = mysqli_fetch_object($get_action_permission);
+    // var_dump($row_action_permission);
+    // button add
+    function buttonEdit($edit_id){
+      global $row_action_permission;
+      if(@$row_action_permission->p_edit){
+        return ' <a href="?action=edit&id='.$edit_id.'" rel="tooltip" class="btn btn-success" data-placement="left" data-original-title="Edit info">
+            <i class="material-icons">edit</i>
+        </a> ';
+      }else{
+        return ' <a href="#" rel="tooltip" class="btn btn-success disabled" data-placement="left" data-original-title="Edit info">
+            <i class="material-icons">edit</i>
+        </a> ';
+      }
+    }
+    // button delete
+    function buttonDelete($delete_id){
+      global $row_action_permission;
+      if(@$row_action_permission->p_delete){
+        return '<button type="button" onclick="getId('.$delete_id.')" data-toggle="modal" data-target="#deleteModal" rel="tooltip" class="btn btn-danger" data-placement="left" data-original-title="Delete transactions" title="Delete">
+          <i class="material-icons">close</i>
+        </button>';
+      }else{
+        return '<button type="button" rel="tooltip" class="btn btn-danger disabled" data-placement="left">
+          <i class="material-icons">close</i>
+        </button>';
+      }
+    }
+    // prevent from access by url
+    if (@$_GET['action']=='add' OR @$_GET['action']=='store') {
+      if(!$row_action_permission->p_add){  exit(); }
+    }else if (@$_GET['action']=='edit' OR @$_GET['action']=='update') {
+      if(!$row_action_permission->p_edit){  exit(); }
+    }else if (@$_GET['action']=='delete') {
+      if(!$row_action_permission->p_delete){  exit(); }
+    }else{
+      if(!$row_action_permission->p_view){  exit(); }
+    }
 
-
-  // // prevent from access by url
-  // if (@$_GET['action']=='add' OR @$_GET['action']=='store') {
-  //   if(!$row_action_permission->p_add){  exit(); }
-  // }else if (@$_GET['action']=='edit' OR @$_GET['action']=='update') {
-  //   if(!$row_action_permission->p_edit){  exit(); }
-  // }else if (@$_GET['action']=='delete') {
-  //   if(!$row_action_permission->p_delete){  exit(); }
-  // }else{
-  //   if(!$row_action_permission->p_view){  exit(); }
-  // }
-
+  }
 ?>

@@ -23,7 +23,7 @@
             $_SESSION['uid'] = $row->id;
             $_SESSION['uname'] = $row->u_name;
             $_SESSION['uimg'] = $row->u_image;
-            $_SESSION['urole'] = $row->u_role;
+            $_SESSION['urole'] = $row->u_role_id;
             $_SESSION['vsloggl'] = true;
             header('location: ../index.php');
           }else{

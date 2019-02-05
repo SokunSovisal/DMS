@@ -1,14 +1,14 @@
 <?php
-	// Call Key
-	include('../config/key.php');
-	
 	// Basic Variable
 	$title = 'User management';
-	$m = 'User Management';
-	$sm = 'User Permission';
+	$m = '5';
+	$sm = '6';
+
+	// Call Key
+	include('../config/key.php');
 	$breadcrumb = '<li class="breadcrumb-item"><a href="'.BASE.'">Dashboard</a></li>
 						    <li class="breadcrumb-item active" aria-current="page">'.$m.'</li>';
-
+	
 	// include header
 	include('../layout/header.php');
 

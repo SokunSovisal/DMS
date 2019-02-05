@@ -1,20 +1,33 @@
 <div class="row">
 	<div class="col-sm-12">
 		<div class="bg-white-content">
-			<?php include('../layout/comps/back.php'); ?>
+			<?=@ERROR?>
+			<?php @$_SESSION['error'] = ''; ?>
+			<?=@SUCCESS?>
+			<?php @$_SESSION['success'] = ''; ?>
+			<?= $btnback ?>
 			<br/>
 			<br/>
-			<form method="post" action="?action=update" class="form-horizontal" id="serviceForm">
+			<form method="post" action="?action=update<?=$sub_s_id?>" class="form-horizontal" id="serviceForm">
 				<input type="hidden" name="id" value="<?=@$_GET['id']?>">
 				<div class="row">
-					<div class="col-sm-12">
+					<div class="col-sm-6">
 						<div class="form-group">
-							<label>Document Name <small>*</small></label>
+							<label>ឈ្មោះ <small>*</small></label>
 							<input type="text" class="form-control form-label1" name="doc_name" value="<?= @$doc_name ?>">
 						</div>
 						<div class="form-group">
-							<label>Description</label>
-							<textarea class="form-control" rows="4" name="doc_description" id="myeditor"><?= @$doc_description ?></textarea>
+							<label>សេវាកម្ម <small>*</small></label>
+							<select class="custom-select" name="doc_service_id" id="doc_service_id" required>
+								<option value="">-- សូមជ្រើសរើ --</option>
+								<?= $services ?>
+							</select>
+						</div>
+					</div>
+					<div class="col-sm-6">
+						<div class="form-group">
+							<label>បរិយាយ</label>
+							<textarea class="form-control" style="height: 124px" name="doc_description" id="myeditor"><?= @$doc_description ?></textarea>
 						</div>
 					</div>
 					<div class="col-sm-12">

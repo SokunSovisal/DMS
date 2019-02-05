@@ -619,5 +619,33 @@ $('.time12picker').datetimepicker({
 
 
 function getId(id) {
-    $('#getid').val(id);
+  $('#getid').val(id);
 }
+
+
+$('#datatables').DataTable({
+  "language": {
+    "decimal":        "",
+    "emptyTable":     "ពុំមានទិន្នន័យឡើយ",
+    "info":           "បង្ហាញ _START_ ដល់ _END_ នៃ _TOTAL_ ជួរ",
+    "infoEmpty":      "បង្ហាញ 0 ដល់ 0 នៃ 0 ជួរ",
+    "infoFiltered":   "(filtered ពី _MAX_ សរុប ជួរ)",
+    "infoPostFix":    "",
+    "thousands":      ",",
+    "lengthMenu":     "បង្ហាញ _MENU_ ជួរ",
+    "loadingRecords": "កំពុងដំណើរការ...",
+    "processing":     "កំពុងដំណើរការ...",
+    "search":         "ស្វែងរក:",
+    "zeroRecords":    "ពុំមានទិន្នន័យឡើយ",
+    "paginate": {
+        "first":      "ដំបូង",
+        "last":       "ចុងក្រោយ",
+        "next":       "បន្ទាប់",
+        "previous":   "ថយ"
+    },
+    "aria": {
+        "sortAscending":  ": activate to sort column ascending",
+        "sortDescending": ": activate to sort column descending"
+    }
+  }
+});

@@ -41,7 +41,7 @@
 	<link rel="stylesheet" type="text/css" href="<?=@BASE?>dist/css/default.css">
 </head>
 
-<body>
+<body class="sidebar-mini">
 	<div class="wrapper ">
 
     <!-- Include Side Left Bar -->

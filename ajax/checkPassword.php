@@ -1,5 +1,7 @@
 <?php
-	include_once '../config/key.php';
+  $m = '5';
+  $sm = '5';
+  include_once '../config/key.php';
 
 	$user_password = trim($_POST['user_password']);
 
@@ -14,7 +16,7 @@
       }else{
         echo 'error;:;<div class="alert alert-danger">
 	              <button type="button" class="close" data-dismiss="alert" aria-label="Close"><i class="material-icons">close</i></button>
-	              <span>Incorrect password!</span>
+	              <span>ពាក្យសម្ងាត់មិនត្រឹមត្រូវ!</span>
 	            </div>';
       }
     }    

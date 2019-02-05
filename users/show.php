@@ -3,19 +3,19 @@
 	<div class="modal-dialog modal-small">
 		<div class="modal-content">
 			<div class="modal-header">
-				ARE YOU SURE WANT TO DO THIS ACTION?
+				តើអ្នកពឹតជាចង់ធ្វើសកម្មភាពមួយនេះមែនទេ?
 			</div>
 			<div class="modal-body delete">
 				<div class="form-group mt-2">
 					<input type="hidden" id="getid" />
-					<label for="">Please confirm your password!</label>
-					<input type="password" class="form-control" placeholder="input your password" required="true" name="user_password" id="user_password" autocomplete="off" />
+					<label for="">បញ្ចាក់ពាក្យសម្ងាត់!</label>
+					<input type="password" class="form-control" placeholder="បញ្ចូលពាក្យសម្ងាត់របស់អ្នក" required="true" name="user_password" id="user_password" autocomplete="off" />
 				</div>
 			</div>
 			<div class="modal-footer justify-content-center">
-				<button type="button" class="btn btn-danger" data-dismiss="modal">Never mind</button>
-				<button type="button" id="delete_user" class="btn btn-success">Submit</button>
-				<button type="button" id="status_user" class="btn btn-success">Submit</button>
+				<button type="button" class="btn btn-danger" data-dismiss="modal">អត់ទេ</button>
+				<button type="button" id="delete_user" class="btn btn-success">យល់ព្រម</button>
+				<button type="button" id="status_user" class="btn btn-success">យល់ព្រម</button>
 			</div>
 		</div>
 	</div>
@@ -29,13 +29,13 @@
 		<table id="datatables" class="table table-hover table-striped" width="100%">
 			<thead>
 				<tr>
-					<th width="6%" class="disabled-sorting text-center">N&deg;</th>
-					<th>Name</th>
-					<th>E-mail</th>
-					<th>phone</th>
-					<th>Role</th>
-					<th width="10%" class="disabled-sorting text-center">Status</th>
-					<th width="15%" class="disabled-sorting text-right">Action</th>
+					<th width="6%" class="disabled-sorting text-center">ល.រ</th>
+					<th>ឈ្មោះ</th>
+					<th>អ៊ីមែល</th>
+					<th>លេទូរស័ព្ទ</th>
+					<th>ឋានៈ</th>
+					<th width="10%" class="disabled-sorting text-center">ដំណើរការ</th>
+					<th width="15%" class="disabled-sorting text-right">សកម្មភាព</th>
 				</tr>
 			</thead>
 			<tbody>
@@ -47,18 +47,6 @@
 
 <script>
 	$(document).ready(function() {
-		$('#datatables').DataTable({
-			"pagingType": "full_numbers",
-			"lengthMenu": [
-				[10, 25, 50, -1],
-				[10, 25, 50, "All"]
-			],
-			responsive: true,
-			language: {
-				search: "_INPUT_",
-				searchPlaceholder: "Search records",
-			}
-		});
 
 		$('.toggle-status').change(function () {
 			$('#delete_user').addClass('sr-only');
@@ -78,6 +66,7 @@
 				type: 'post',
 				data: {method: 'fetch', user_password: user_password},
 				success: function(dataReturn){
+					alert(dataReturn);
 					var data = dataReturn.split(";:;");
 					if (data[0]=='success') {
 						window.location.replace("?action=delete&id="+user_id);

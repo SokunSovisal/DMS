@@ -1,11 +1,11 @@
 <?php
-	// Call Key
-	include('../config/key.php');
 
 	// Basic Variable
 	$title = 'User Roles';
-	$m = 'User Management';
-	$sm = 'User Roles';
+	$m = '5';
+	$sm = '7';
+	// Call Key
+	include('../config/key.php');
 	$breadcrumb = '<li class="breadcrumb-item"><a href="'.BASE.'">Dashboard</a></li>
 						    <li class="breadcrumb-item active" aria-current="page">'.$sm.'</li>';
 
@@ -107,13 +107,9 @@
 										<td class="text-center">'.$i.'</td>
 										<td>'.$role->ur_name.'</td>
 										<td>'.$role->ur_description.'</td>
-										<td class="td-actions text-right">
-											<a href="?action=edit&id='.$role->id.'" rel="tooltip" class="btn btn-success" data-placement="left" data-original-title="Edit info">
-												<i class="material-icons">edit</i>
-											</a>
-											<button type="button" onclick="getId('.$role->id.')" data-toggle="modal" data-target="#deleteModal" class="btn btn-danger btndelete" title="Delete">
-												<i class="material-icons">close</i>
-											</button>
+										<td class="td-actions text-right">'.
+											buttonEdit($role->id).
+											buttonDelete($role->id).'
 										</td>
 									</tr>';
 				$i++;

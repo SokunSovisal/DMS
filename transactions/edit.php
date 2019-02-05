@@ -9,34 +9,34 @@
 				<div class="row">
 					<div class="col-sm-6">
 						<div class="form-group">
-							<label>Record Date <small>*</small></label>
-							<input type="text" class="datepicker form-control" placeholder="Record Date" name="tr_date" value="<?= date('M/d/Y', strtotime(@$tr_date)) ?>" id="daterecord" data-toggle="datetimepicker" data-target="#daterecord" required>
+							<label>កាបរិច្ឆេទ <small>*</small></label>
+							<input type="text" class="datepicker form-control" placeholder="Record Date" name="tr_date" value="<?= date('M/d/Y', strtotime(@$tr_date)) ?>" id="daterecord" data-toggle="datetimepicker" data-target="#daterecord" autocomplete="off" required>
 						</div>
 						<div class="form-group">
-							<label>Company Name <small>*</small></label>
+							<label>ឈ្មោះក្រុមហ៊ុន <small>*</small></label>
 							<select class="form-control" name="tr_company" required>
-								<option value="">Choose Company</option>
+								<option value="">-- សូមជ្រើសរើស --</option>
 								<?=$companies?>
 							</select>
 						</div>
 						<div class="form-group">
-							<label>Service <small>*</small></label>
+							<label>សេវាកម្ម <small>*</small></label>
 							<select class="form-control" name="tr_service" required>
-								<option value="">Choose Service</option>
+								<option value="">-- សូមជ្រើសរើស --</option>
 								<?=$services?>
 							</select>
 						</div>
 					</div> <!-- /.col -->
 					<div class="col-sm-6">
 						<div class="form-group">
-							<label>Control By <small>*</small></label>
+							<label>គ្រប់គ្រប់ដោយ <small>*</small></label>
 							<select class="form-control" name="tr_em_id" required>
-								<option value="">Select Employee</option>
+								<option value="">-- សូមជ្រើសរើស --</option>
 								<?=$employees?>
 							</select>
 						</div>
 						<div class="form-group">
-							<label>Description</label>
+							<label>បរិយាយ</label>
 							<textarea class="form-control" placeholder="Description" style="height: 125px;" name="tr_description"><?= @$tr_description ?></textarea>
 						</div>
 					</div>
@@ -52,6 +52,7 @@
 		</div>
 	</div>
 </div>
+
 <script>
-	md.initFormExtendedDatetimepickers();
+
 </script>

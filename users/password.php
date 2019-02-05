@@ -9,7 +9,7 @@
 				<div class="row">
 					<div class="col-sm-6">
             <div class="form-group">
-              <label> E-mail </label>
+              <label> អ៊ីមែល </label>
               <input type="email" class="form-control" placeholder="email" readonly value="<?=@$email?>">
             </div>
 					</div> <!-- /.col -->
@@ -18,17 +18,17 @@
 					<div class="col-sm-6">
           
             <div class="form-group">
-            <label> Current Password <small>*</small></label>
+            <label> ពាក្យសម្ងាត់បច្ចុប្បន្ន <small>*</small></label>
               <input type="password" class="form-control" placeholder="current-password" name="current_password" required="true" autocomplete="off">
             </div>
 
             <div class="form-group">
-              <label> New Password <small>*</small></label>
+              <label> ពាក្យសម្ងាត់ថ្មី <small>*</small></label>
               <input type="password" class="form-control" placeholder="new-password" minlength="6" name="password" required="true" autocomplete="off">
             </div>
 
             <div class="form-group">
-              <label> Confirm Password <small>*</small></label>
+              <label> ពាក្យសម្ងាត់ថ្មីម្ដងទៀត <small>*</small></label>
               <input type="password" class="form-control" placeholder="cofirm-password"  equalTo="#password" name="password_confirmation" required="true" autocomplete="off">
             </div>
 

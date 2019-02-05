@@ -1,18 +1,17 @@
 <?php
-	// Call Key
-	include('../config/key.php');
 
 	// Basic Variable
 	$title = 'Service management';
-	$m = 'Data List';
-	$sm = 'Services';
+	$m = '4';
+	$sm = '4';
+	// Call Key
+	include('../config/key.php');
 	$breadcrumb = '<li class="breadcrumb-item"><a href="'.BASE.'">Dashboard</a></li>
 						    <li class="breadcrumb-item active" aria-current="page">'.$sm.'</li>';
 
 
 	// include header
 	include('../layout/header.php');
-
 	if (@$_GET['action']=='add') {
 		// include Page
 		include('create.php');
@@ -49,7 +48,7 @@
 			}else{
 				@$_SESSION['error'] = '<div class="alert alert-danger">
 					<button type="button" class="close" data-dismiss="alert" aria-label="Close"><i class="material-icons">close</i></button>
-					<span>Service not found!</span>
+					<span>សេវាកម្មរកពុំឃើញឡើយ!</span>
 				</div>';
 				header ('Location: index.php');
 			}
@@ -66,7 +65,7 @@
 		if ($db->query($sql)==true) {
 			@$_SESSION['success'] = '<div class="alert alert-success">
 				<button type="button" class="close" data-dismiss="alert" aria-label="Close"><i class="material-icons">close</i></button>
-				<span>Service has been Updated!</span>
+				<span>សេវាកម្មត្រូវបានកែប្រែ!</span>
 			</div>';
 			header ('Location: index.php');
 			exit();
@@ -81,14 +80,14 @@
 			if($q_service->num_rows == 0){
 				@$_SESSION['error'] = '<div class="alert alert-danger">
 					<button type="button" class="close" data-dismiss="alert" aria-label="Close"><i class="material-icons">close</i></button>
-					<span>Service not found!</span>
+					<span>សេវាកម្មរកពុំឃើញឡើយ!</span>
 				</div>';
 				header ('Location: index.php');
 			}else{
 				if ( $db->query("DELETE FROM tbl_service WHERE s_id=".$_GET['id']) == true) {
 					@$_SESSION['success'] = '<div class="alert alert-success">
 						<button type="button" class="close" data-dismiss="alert" aria-label="Close"><i class="material-icons">close</i></button>
-						<span>Service has been Deleted successfully!</span>
+						<span>សេវាកម្មត្រូវានលុបដោយជោគជ័យ</span>
 					</div>';
 					header ('Location: index.php');
 				}
@@ -97,7 +96,7 @@
 		}else{
 			@$_SESSION['error'] = '<div class="alert alert-danger">
 				<button type="button" class="close" data-dismiss="alert" aria-label="Close"><i class="material-icons">close</i></button>
-				<span>Service not found!</span>
+				<span>សេវាកម្មរកពុំឃើញឡើយ!</span>
 			</div>';
 			header ('Location: index.php');
 		}
@@ -113,11 +112,21 @@
 										<td>'.$service->s_name.'</td>
 										<td>'.$service->s_price.'</td>
 										<td>'.$service->s_description.'</td>
+										<td class="td-actions">
+											<button type="button" onclick="set_frame_doc('.$service->s_id.')" data-toggle="modal" data-target="#main_modal" class="btn btn-warning" title="doucment">
+												<i class="fa fa-file-alt"></i> &nbsp;ឯកសារ
+											</button>
+										</td>
+										<td class="td-actions">
+											<button type="button" onclick="set_frame_step('.$service->s_id.')" data-toggle="modal" data-target="#main_modal" class="btn btn-info" title="steps">
+												<i class="material-icons"> work </i> &nbsp;ជំហាន
+											</button>
+										</td>
 										<td class="td-actions text-right">
-											<a href="?action=edit&id='.$service->s_id.'" class="btn btn-success" title="edit">
+											<a href="?action=edit&id='.$service->s_id.'" class="btn btn-success" title="កែប្រែ">
 													<i class="material-icons">edit</i>
 											</a>
-											<button type="button" onclick="getId('.$service->s_id.')" data-toggle="modal" data-target="#deleteModal" class="btn btn-danger" title="Delete">
+											<button type="button" onclick="getId('.$service->s_id.')" data-toggle="modal" data-target="#deleteModal" class="btn btn-danger" title="លុប">
 												<i class="material-icons">close</i>
 											</button>
 										</td>

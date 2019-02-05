@@ -8,28 +8,28 @@
 				<div class="row">
 					<div class="col-sm-6">
 						<div class="form-group">
-							<label> User Name <small>*</small></label>
+							<label> ឈ្មោះ <small>*</small></label>
               <input type="text" class="form-control" placeholder="username" name="u_name">
             </div>
-		<div class="form-group">
-			<label> Gender <small>*</small></label>
-			<select class="form-control selectpicker" name="u_gender">
-				<option value="">-- Please choose --</option>
-				<option value="1">Male</option>
-				<option value="2">Female</option>
-				<option value="3">Other</option>
-			</select>
-		</div>
-		<div class="form-group">
-			<label> Phone <small>*</small></label>
-			<input type="text" placeholder="phone" class="form-control" name="u_phone" >
-		</div>
-	</div> <!-- /.col -->
-	
+						<div class="form-group">
+							<label> ភេទ <small>*</small></label>
+							<select class="form-control selectpicker" name="u_gender">
+								<option value="">-- សូមជ្រើសរើស --</option>
+								<option value="1">ប្រុស</option>
+								<option value="2">ស្រី</option>
+								<option value="3">ផ្សេងៗ</option>
+							</select>
+						</div>
+						<div class="form-group">
+							<label> លេខទូរស័ព្ទ <small>*</small></label>
+							<input type="text" placeholder="phone" class="form-control" name="u_phone" >
+						</div>
+					</div> <!-- /.col -->
+					
 
-	<div class="col-sm-6">
-		<div class="form-group">
-			<label> E-mail <small>*</small></label>
+					<div class="col-sm-6">
+						<div class="form-group">
+							<label> អ៊ីមែល <small>*</small></label>
               <input type="email" class="form-control" placeholder="email"  name="email">
             </div>
 

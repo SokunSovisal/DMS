@@ -1,11 +1,11 @@
 <?php
-	// Call Key
-	include('../config/key.php');
 	
 	// Basic Variable
 	$title = 'Employee management';
-	$m = 'Employee';
-	$sm = '';
+	$m = 4;
+	$sm = 3;
+	// Call Key
+	include('../config/key.php');
 	$breadcrumb = '<li class="breadcrumb-item"><a href="'.BASE.'">Dashboard</a></li>
 						    <li class="breadcrumb-item active" aria-current="page">'.$m.'</li>';
 
@@ -144,7 +144,6 @@
 		}
 		// include Page
 		include('show.php');
-		include('detail.php');
 	}
 
 

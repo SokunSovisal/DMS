@@ -1,12 +1,12 @@
 <?php
 
-	// Call Key
-	include('../config/key.php');
 	
 	// Basic Variable
 	$title = 'Transactions';
-	$m = 'Transactions';
-	$sm = '';
+	$m = '4';
+	$sm = '9';
+	// Call Key
+	include('../config/key.php');
 	$breadcrumb = '<li class="breadcrumb-item"><a href="'.BASE.'">Dashboard</a></li>
 						    <li class="breadcrumb-item active" aria-current="page">'.$m.'</li>';
 
@@ -72,7 +72,7 @@
 
 					$tr_date=$row->tr_date;
 					$tr_company=$row->tr_company;
-					$tr_co_name=$row->co_name;
+					$tr_co_name=$row->co_name_kh;
 					$tr_service=$row->tr_service;
 					$tr_s_name=$row->s_name;
 					$tr_em_id=$row->tr_em_id;
@@ -81,9 +81,9 @@
 
 					// Get Company
 					$companies = '';
-					$query = $db->query("SELECT co_name,co_id FROM tbl_company ORDER BY co_name");
+					$query = $db->query("SELECT co_name_kh,co_name_en,co_id FROM tbl_company ORDER BY co_name_en");
 					while ($row = mysqli_fetch_object($query)) {
-						$companies .= '<option value="'.$row->co_id.'" '.(($row->co_id==$tr_company)?'selected':'').'>'.$row->co_name.'</option>';
+						$companies .= '<option value="'.$row->co_id.'" '.(($row->co_id==$tr_company)?'selected':'').'>'.$row->co_name_en.'</option>';
 					}
 
 					// Get Service
@@ -173,21 +173,12 @@
 				$tbody .='<tr>
 					<td class="text-center">'.$i.'</td>
 					<td>'.$transactions->tr_date.'</td>
-					<td>'.$transactions->co_name.'</td>
+					<td>'.$transactions->co_name_en.'</td>
 					<td>'.$transactions->s_name.'</td>
 					<td>'.$transactions->em_name.'</td>
-					<td class="td-actions">
-						<a href="../transaction_documents/index.php?tr_id='.$transactions->tr_id.'" rel="tooltip" class="btn btn-success" data-original-title="Document">
-								Add Document
-						</a>
-					</td>
-					<td class="td-actions text-right">
-						<a href="?action=edit&id='.$transactions->tr_id.'" class="btn btn-success">
-							<i class="material-icons">edit</i>
-						</a>
-						<button type="button" onclick="getId('.$transactions->tr_id.')" data-toggle="modal" data-target="#deleteModal" class="btn btn-danger" title="Delete">
-							<i class="material-icons">close</i>
-						</button>
+					<td class="td-actions text-right">'.
+						buttonEdit($transactions->tr_id).
+						buttonDelete($transactions->tr_id).'
 					</td>
 				</tr>';
 				$i++;
@@ -195,7 +186,6 @@
 		}
 		// include Page
 		include('show.php');
-		// include('detail.php');
 	}
 	// include footer
 	include('../layout/footer.php');

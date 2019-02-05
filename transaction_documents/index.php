@@ -1,8 +1,8 @@
 <?php
 	// Basic Variable
 	$title = 'Transaction Document';
-	$m = 'transactions';
-	$sm = 'transactions';
+	$m = '6';
+	$sm = '9';
 
 	// Call Key
 	include('../config/key.php');
@@ -24,7 +24,9 @@
 				}
 				// Get Document
 				$documents = '';
-				$query = $db->query("SELECT * FROM tbl_document ORDER BY doc_name");
+				$query = $db->query("SELECT * FROM tbl_document 
+					WHERE doc_id NOT IN (SELECT td_document_id FROM tbl_transaction_document WHERE td_transaction_id='$tr_id') 
+					ORDER BY doc_name");
 				while ($row = mysqli_fetch_object($query)) {
 					$documents .= '<option value="'.$row->doc_id.'">'.$row->doc_name.'</option>';
 				}
@@ -112,8 +114,7 @@
 						header ('Location: index.php');
 					}
 				}
-			}
-			else if (@$_GET['action']=='update') {
+			}else if (@$_GET['action']=='update') {
 				// Get Value From Posted Form
 				$id = $_POST['id'];
 				$td_date = $db->real_escape_string(date('Y-m-d', strtotime($_POST['td_date'])));
@@ -183,13 +184,9 @@
 							<td>&nbsp;'.$td->td_description.'</td>
 							<td>'.$td->td_control_by.'</td>
 							<td>'.$td->td_approve_by.'</td>
-							<td class="td-actions text-right">
-								<a href="?action=edit&id='.$td->td_id.'&tr_id='.$td->td_transaction_id.'" class="btn btn-success" titile="edit">
-									<i class="material-icons">edit</i>
-								</a>
-								<button type="button" onclick="getId('.$td->td_id.')" data-toggle="modal" data-target="#deleteModal" class="btn btn-danger" title="Delete">
-									<i class="material-icons">close</i>
-								</button>
+							<td class="td-actions text-right">'.
+								buttonEdit($td->td_id).
+								buttonDelete($td->td_id).'
 							</td>
 						</tr>';
 						$i++;

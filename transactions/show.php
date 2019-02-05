@@ -1,21 +1,4 @@
-<!-- small modal -->
-<div class="modal fade modal-mini modal-primary" id="deleteModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-	<div class="modal-dialog modal-small">
-		<div class="modal-content">
-			<div class="modal-header">
-				ARE YOU SURE WANT TO DELETE THIS TRANSITION?
-			</div>
-			<div class="modal-body delete">
-				<input type="hidden" id="getid" />
-			</div>
-			<div class="modal-footer justify-content-center">
-				<button type="button" class="btn btn-danger" data-dismiss="modal">Never mind</button>
-				<button type="button" id="password_submit" class="btn btn-success">Submit</button>
-			</div>
-		</div>
-	</div>
-</div>
-<!--    end small modal -->
+<?php include('../layout/comps/modalDelete.php'); ?>
 
 <div class="row">
 	<div class="col-sm-12">
@@ -27,13 +10,12 @@
 				<table id="datatables" class="table table-hover table-striped" width="100%">
 					<thead>
 						<tr>
-							<th width="5%" class="disabled-sorting text-center">N&deg;</th>
-							<th>Record Date</th>
-							<th>Company Name</th>
-							<th>Service Type</th>
-							<th>Control By</th>
-							<th>Document</th>
-							<th width="10%" class="disabled-sorting text-right">Action</th>
+							<th width="5%" class="disabled-sorting text-center">ល.រ</th>
+							<th>កាបរិច្ឆេទ</th>
+							<th>ឈ្មោះក្រុមហ៊ុន</th>
+							<th>ប្រភេទសាវាកម្ម</th>
+							<th>គ្រប់គ្រងដោយ</th>
+							<th width="10%" class="disabled-sorting text-right">សកម្មភាព</th>
 						</tr>
 					</thead>
 					<tbody>
@@ -47,19 +29,6 @@
 
 <script>
 	$(document).ready(function() {
-		$('#datatables').DataTable({
-			"pagingType": "full_numbers",
-			"lengthMenu": [
-				[10, 25, 50, -1],
-				[10, 25, 50, "All"]
-			],
-			responsive: true,
-			language: {
-				search: "_INPUT_",
-				searchPlaceholder: "Search records",
-			}
-		});
-
 		$('#password_submit').click( function () {
 			var id = $('#getid').val();
 			window.location.replace("?action=delete&id="+id);

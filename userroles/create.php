@@ -8,13 +8,13 @@
 				<div class="row">
 					<div class="col-sm-6">
 						<div class="form-group">
-							<label> Role Name <small>*</small></label>
+							<label> ឋានៈ <small>*</small></label>
               <input type="text" class="form-control" placeholder="roles" name="ur_name">
             </div>
 					</div> <!-- /.col -->
 					<div class="col-sm-6">
             <div class="form-group">
-							<label> Description </label>
+							<label> ពិពណ៌នា </label>
 							<textarea class="form-control" rows="1" placeholder="description" name="ur_description"></textarea>
             </div>
 					</div> <!-- /.col -->
